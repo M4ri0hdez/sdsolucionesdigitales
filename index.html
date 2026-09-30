@@ -506,7 +506,8 @@
       const res = await fetch(formApi + '/api/contacto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(datos)
+        body: JSON.stringify(datos),
+        signal: AbortSignal.timeout(25000)
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || 'No se pudo enviar');
