@@ -98,7 +98,7 @@ const server = createServer(async (req, res) => {
 
   try {
     if (req.method === 'GET' && url.pathname === '/api/asistente/salud') {
-      return json(res, 200, { ok: true, ia: tieneClave() });
+      return json(res, 200, { ok: true, ia: tieneClave(), v: 'mail-web3' });
     }
 
     if (req.method === 'POST' && url.pathname === '/api/asistente/mensaje') {

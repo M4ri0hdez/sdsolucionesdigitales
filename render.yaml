@@ -5,7 +5,8 @@ services:
     plan: free
     buildCommand: npm install --omit=dev
     startCommand: npm start
-    healthCheckPath: /
+    autoDeploy: true
+    healthCheckPath: /api/asistente/salud
     envVars:
       - key: NODE_ENV
         value: production

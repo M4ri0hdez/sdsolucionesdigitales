@@ -245,7 +245,14 @@
     fin.addEventListener('click', async () => {
       fin.disabled = true;
       try {
-        await api('/api/asistente/cerrar', { sessionId: sessionId() });
+        const data = await api('/api/asistente/cerrar', { sessionId: sessionId() });
+        if (data && data.cuerpo && typeof window.sdEnviarCorreo === 'function') {
+          await window.sdEnviarCorreo({
+            subject: data.asunto || 'S.D · Informe de atención',
+            text: data.cuerpo,
+            nombre: data.nombre || 'Fujiwara',
+          }).catch((err) => console.error(err));
+        }
       } catch (err) {
         console.error(err);
       } finally {

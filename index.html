@@ -477,6 +477,7 @@
   </div>
 </footer>
 
+<script src="correo-web.js"></script>
 <script>
   // Aparición suave al hacer scroll
   const observador = new IntersectionObserver(entradas => {
@@ -487,7 +488,6 @@
   // Año automático del footer
   document.getElementById('anio').textContent = new Date().getFullYear();
 
-  const formApi = (window.SD_API || (location.protocol === 'file:' ? 'http://localhost:3000' : '')).replace(/\/$/, '');
   const formulario = document.getElementById('formulario');
   const avisoForm = document.getElementById('form-aviso');
   const btnForm = formulario.querySelector('button[type="submit"]');
@@ -503,14 +503,13 @@
     avisoForm.textContent = 'Enviando…';
     btnForm.disabled = true;
     try {
-      const res = await fetch(formApi + '/api/contacto', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(datos),
-        signal: AbortSignal.timeout(25000)
+      if (typeof window.sdEnviarCorreo !== 'function') throw new Error('sin correo');
+      await window.sdEnviarCorreo({
+        subject: 'S.D · Contacto web — ' + datos.nombre,
+        text: 'Nombre: ' + datos.nombre + '\nCorreo: ' + datos.correo + '\n\nMensaje:\n' + datos.mensaje,
+        replyTo: datos.correo,
+        nombre: datos.nombre
       });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data.error || 'No se pudo enviar');
       avisoForm.className = 'form-aviso ok';
       avisoForm.textContent = 'Gracias, ' + datos.nombre + '. Te contactaremos muy pronto.';
       formulario.reset();
