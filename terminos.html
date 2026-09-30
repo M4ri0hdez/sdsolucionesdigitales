@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y condiciones — S.D Soluciones Digitales</title>
+<meta name="description" content="Términos y condiciones de servicio de S.D Soluciones Digitales: alcance, aprobación, entrega, responsabilidad y uso del software, apps y páginas web.">
+<link rel="icon" href="logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fondo:     #17131f;
+    --fondo-2:   #1c1726;
+    --panel:     #241d30;
+    --panel-2:   #2a2238;
+    --borde:     rgba(207,195,222,.12);
+    --borde-h:   rgba(207,195,222,.28);
+    --purpura:   #6f5b8f;
+    --purpura-h: #5d4a7a;
+    --purpura-cl:#e9e2f2;
+    --lila:      #cfc3de;
+    --rosa:      #c998a8;
+    --texto:     #f0ecf5;
+    --gris:      #9a92a8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.7;
+    font-weight: 400;
+  }
+  ::selection { background: var(--purpura); color: #fff; }
+  h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 600; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  .contenedor { width: min(860px, 92%); margin: 0 auto; }
+
+  nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    background: rgba(23,19,31,.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--borde);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; width: min(1120px, 92%); margin: 0 auto; }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; background: var(--panel); }
+  .nav-logo span { font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--texto); }
+  .nav-logo span b { color: var(--rosa); font-weight: 700; }
+  .btn-nav {
+    background: var(--purpura); color: #fff;
+    padding: 10px 22px; border-radius: 30px; font-weight: 500; font-size: .9rem;
+    transition: background .3s;
+  }
+  .btn-nav:hover { background: var(--purpura-h); }
+
+  .legal {
+    padding: 130px 0 80px;
+    background:
+      radial-gradient(ellipse 50% 40% at 80% 8%, rgba(111,91,143,.18), transparent 70%),
+      var(--fondo);
+  }
+  .kicker {
+    display: inline-block; letter-spacing: 3.5px; text-transform: uppercase;
+    font-size: .75rem; font-weight: 600; color: var(--rosa); margin-bottom: 16px;
+  }
+  .legal h1 { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; margin-bottom: 12px; }
+  .legal .meta { color: var(--lila); font-weight: 300; margin-bottom: 32px; }
+
+  .aviso {
+    background: rgba(201,152,168,.12);
+    border: 1px solid rgba(201,152,168,.35);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 40px;
+  }
+  .aviso strong { color: var(--rosa); display: block; margin-bottom: 8px; font-size: 1.02rem; }
+  .aviso p { color: var(--lila); font-weight: 300; font-size: .96rem; }
+
+  .cita {
+    background: var(--panel);
+    border-left: 3px solid var(--rosa);
+    border-radius: 0 12px 12px 0;
+    padding: 14px 18px;
+    margin: 16px 0 18px;
+  }
+  .cita p { color: var(--texto); font-size: .92rem; font-style: italic; margin-bottom: 6px; }
+  .cita cite { color: var(--rosa); font-size: .78rem; font-style: normal; letter-spacing: .4px; }
+
+  article section { margin-bottom: 36px; scroll-margin-top: 90px; }
+  article h2 {
+    font-size: 1.45rem;
+    margin-bottom: 12px;
+    color: var(--purpura-cl);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--borde);
+  }
+  article h3 { font-size: 1.08rem; margin: 18px 0 8px; color: var(--rosa); font-family: 'Inter', sans-serif; font-weight: 600; }
+  article p, article li { color: var(--lila); font-weight: 300; }
+  article p { margin-bottom: 12px; }
+  article ul, article ol { padding-left: 22px; margin-bottom: 12px; }
+  article li { margin: 7px 0; }
+  article strong { color: var(--texto); font-weight: 500; }
+
+  footer {
+    background: var(--fondo); color: var(--gris);
+    padding: 46px 0 28px; border-top: 1px solid var(--borde);
+  }
+  .footer-grid {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 22px; margin-bottom: 26px;
+    width: min(1120px, 92%); margin-inline: auto;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 12px; }
+  .footer-logo img { height: 42px; width: 42px; border-radius: 50%; object-fit: cover; background: var(--panel); }
+  .footer-logo b { color: var(--texto); font-family: 'Fraunces', serif; font-weight: 600; }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: .9rem; transition: color .3s; }
+  .footer-links a:hover { color: var(--rosa); }
+  .copyright {
+    text-align: center; font-size: .84rem; padding-top: 22px;
+    border-top: 1px solid var(--borde);
+    width: min(1120px, 92%); margin: 0 auto;
+  }
+
+  @media (max-width: 640px) {
+    .legal { padding-top: 110px; }
+    .aviso, .cita { padding: 16px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpeg" alt="Logo S.D">
+      <span>S<b>.</b>D Soluciones Digitales</span>
+    </a>
+    <a href="index.html" class="btn-nav">Volver al inicio</a>
+  </div>
+</nav>
+
+<main class="legal">
+  <div class="contenedor">
+    <span class="kicker">Documento legal</span>
+    <h1>Términos y condiciones de servicio</h1>
+    <p class="meta">Última actualización: 29 de septiembre de 2026 · S.D Soluciones Digitales</p>
+
+    <div class="aviso">
+      <strong>Aviso importante sobre responsabilidad</strong>
+      <p>
+        Una vez que el cliente aprueba el trabajo y se cierra el trato, S.D Soluciones Digitales
+        no se hace cargo de fallos, daños, pérdidas o interrupciones que ocurran después de esa
+        aprobación. Tampoco responde si alguien manipula, altera o interviene el código, la
+        configuración, los servidores o los datos, ni de cualquier consecuencia que eso tenga
+        para la página, la aplicación o el negocio del cliente.
+      </p>
+    </div>
+
+    <article>
+      <section id="identificacion">
+        <h2>1. Identificación y aceptación</h2>
+        <p>
+          Estos términos y condiciones regulan la relación entre <strong>S.D Soluciones Digitales</strong>
+          (en adelante, “nosotros”, “S.D” o “el prestador”) y cualquier persona física o moral
+          (en adelante, “el cliente”) que solicite, contrate o reciba servicios de software,
+          aplicaciones móviles, páginas web u otros desarrollos digitales.
+        </p>
+        <p>
+          Al solicitar una cotización, firmar un acuerdo, realizar un pago, aprobar un entregable
+          o utilizar cualquiera de nuestros servicios, el cliente declara haber leído, entendido
+          y aceptado estos términos en su totalidad. Si no está de acuerdo, no debe contratar
+          ni continuar con el servicio. El consentimiento puede ser expreso o tácito, conforme
+          al <strong>artículo 1803 del Código Civil Federal</strong>.
+        </p>
+        <blockquote class="cita">
+          <p>“Los contratos se perfeccionan por el mero consentimiento […]. Desde que se perfeccionan obligan a los contratantes no sólo al cumplimiento de lo expresamente pactado, sino también a las consecuencias que, según su naturaleza, son conforme a la buena fe, al uso o a la ley.”</p>
+          <cite>Artículo 1796, Código Civil Federal</cite>
+        </blockquote>
+        <p>
+          Las partes pueden pactar las cláusulas que consideren convenientes, con fundamento
+          en el <strong>artículo 1839 del Código Civil Federal</strong> y, tratándose de actos
+          de comercio, en el <strong>artículo 78 del Código de Comercio</strong>. Estos términos
+          se complementan con la cotización o contrato particular de cada proyecto. Si hay
+          contradicción, prevalece lo pactado por escrito para ese proyecto, salvo en materia
+          de limitación de responsabilidad posterior al cierre, donde rige este documento.
+        </p>
+      </section>
+
+      <section id="servicios">
+        <h2>2. Servicios</h2>
+        <p>S.D Soluciones Digitales ofrece, entre otros:</p>
+        <ul>
+          <li>Desarrollo de software a medida.</li>
+          <li>Aplicaciones móviles (Android, iOS u otras plataformas acordadas).</li>
+          <li>Páginas y sitios web, incluyendo catálogos, reservaciones o tiendas en línea.</li>
+          <li>Herramientas digitales para uso personal o de un negocio pequeño.</li>
+          <li>Ajustes, mejoras o acompañamiento, únicamente cuando se hayan contratado por separado.</li>
+        </ul>
+        <p>
+          El alcance exacto de cada trabajo es el que quede descrito por escrito en la propuesta
+          o contrato. Cualquier función, diseño, integración o cambio no incluido ahí se considera
+          trabajo adicional y puede cotizarse aparte.
+        </p>
+        <p>
+          No garantizamos resultados comerciales (ventas, tráfico, posicionamiento, número de
+          usuarios u otros indicadores de negocio), salvo que se hayan pactado por escrito
+          métricas concretas y realistas.
+        </p>
+      </section>
+
+      <section id="cotizacion">
+        <h2>3. Cotización, alcance y pagos</h2>
+        <h3>3.1 Cotización</h3>
+        <p>
+          Las cotizaciones tienen la vigencia indicada en el documento. Si no se indica,
+          se entenderán vigentes por 15 días naturales. Precios, plazos y alcance pueden
+          cambiar si el cliente modifica los requisitos después de aceptada la propuesta.
+        </p>
+        <h3>3.2 Pagos</h3>
+        <p>
+          Salvo pacto distinto, el trabajo inicia con un anticipo. El resto se cubre según
+          los hitos acordados. La falta de pago puede suspender el desarrollo, la entrega,
+          la publicación o el acceso a archivos, sin que ello genere responsabilidad para S.D.
+        </p>
+        <p>
+          Los pagos realizados por trabajo ya ejecutado, hitos entregados o anticipos
+          correspondientes a etapas iniciadas no son reembolsables, salvo error imputable
+          exclusivamente a S.D y reconocido por escrito.
+        </p>
+        <h3>3.3 Plazos</h3>
+        <p>
+          Los plazos son estimados y dependen de que el cliente entregue a tiempo
+          información, contenidos, accesos, aprobaciones y materiales. Las demoras del
+          cliente no se cuentan como incumplimiento de S.D.
+        </p>
+      </section>
+
+      <section id="aprobacion">
+        <h2>4. Aprobación del cliente y cierre del trato</h2>
+        <p>
+          El cliente tiene la obligación de revisar cada entregable (diseños, versiones,
+          sitios, aplicaciones, código, reportes de prueba u otros) dentro del plazo
+          indicado. Si no hay plazo, se entenderán <strong>5 días hábiles</strong> desde
+          la notificación de entrega. El silencio, el uso en producción, la publicación
+          o el pago del saldo se consideran aprobación, como consentimiento tácito
+          en términos del <strong>artículo 1803, fracción II, del Código Civil Federal</strong>.
+        </p>
+        <p>
+          Se entiende que el trato queda <strong>cerrado</strong> cuando ocurra cualquiera
+          de estas situaciones:
+        </p>
+        <ul>
+          <li>El cliente aprueba de forma expresa el producto final (correo, mensaje, firma o medio acordado).</li>
+          <li>Vence el plazo de revisión sin observaciones por escrito.</li>
+          <li>El producto se publica, se pone en producción o se entrega al usuario final por instrucción del cliente.</li>
+          <li>Se cubre el pago de cierre o se firma el acta de entrega.</li>
+        </ul>
+        <p>
+          <strong>A partir del cierre, el proyecto se considera concluido y recibido.</strong>
+          Cualquier corrección, mejora, actualización, migración, respaldo, monitoreo
+          o soporte posterior será un servicio nuevo, sujeto a nueva cotización,
+          salvo que exista un contrato de mantenimiento vigente y por escrito.
+          Esto se apoya en el <strong>artículo 1839 del Código Civil Federal</strong>
+          y en las reglas del contrato de obra (<strong>artículos 2616 y siguientes</strong>
+          del mismo código): recibida la obra, no se reabre el trato por cambios,
+          usos o fallos ajenos a lo originalmente pactado.
+        </p>
+      </section>
+
+      <section id="responsabilidad">
+        <h2>5. Limitación de responsabilidad</h2>
+        <p>
+          <strong>Una vez cerrado el trato, S.D Soluciones Digitales no se hace cargo
+          de fallos de la aplicación, de la página web, del software ni de cualquier
+          sistema entregado.</strong> Esto incluye, de manera enunciativa y no limitativa:
+        </p>
+        <ul>
+          <li>Errores, caídas, lentitud, pantallas en blanco o interrupciones del servicio.</li>
+          <li>Pérdida, corrupción o filtración de datos, archivos, bases de datos o copias de seguridad.</li>
+          <li>Incompatibilidades que aparezcan después de la aprobación (navegadores, sistemas operativos, dispositivos, tiendas de aplicaciones, APIs o librerías).</li>
+          <li>Fallos derivados de actualizaciones de terceros, caducidad de certificados, cambios de hosting o de dominio.</li>
+          <li>Problemas de seguridad, accesos no autorizados o mal uso por parte del cliente, sus empleados, proveedores o usuarios.</li>
+          <li>Cualquier afectación económica, operativa, reputacional o legal al negocio o a la vida personal del cliente.</li>
+        </ul>
+        <p>
+          En ningún caso S.D será responsable de daños indirectos, lucro cesante, pérdida
+          de clientela, pérdida de oportunidad, daño moral, sanciones, ni de cantidades
+          superiores a lo efectivamente pagado por el cliente en el proyecto correspondiente
+          durante los tres meses anteriores al reclamo. Esta limitación se pacta al amparo
+          del <strong>artículo 1839 del Código Civil Federal</strong>. No cubre el dolo:
+          la responsabilidad proveniente de dolo es exigible y la renuncia a hacerla
+          efectiva es nula, conforme al <strong>artículo 2106 del Código Civil Federal</strong>.
+        </p>
+        <blockquote class="cita">
+          <p>“Nadie está obligado al caso fortuito sino cuando ha dado causa o contribuido a él, cuando ha expresamente aceptado esa responsabilidad, o cuando la ley se la impone.”</p>
+          <cite>Artículo 2111, Código Civil Federal</cite>
+        </blockquote>
+        <p>
+          Caídas de internet, fallos de hosting, tiendas de aplicaciones, pasarelas de pago,
+          actualizaciones de sistemas operativos o de terceros, y hechos imprevisibles o
+          inevitables, se tratan como caso fortuito o causa extraña no imputable a S.D,
+          salvo que S.D los haya causado o aceptado por escrito.
+        </p>
+        <p>
+          Durante el desarrollo, la responsabilidad de S.D se limita a corregir, dentro
+          del alcance contratado, los defectos reproducibles que impidan el uso razonable
+          de lo acordado, siempre que se reporten antes del cierre. Los daños, de existir,
+          deben ser consecuencia inmediata y directa del incumplimiento, según el
+          <strong>artículo 2110 del Código Civil Federal</strong>.
+        </p>
+      </section>
+
+      <section id="codigo">
+        <h2>6. Manipulación del código y alteraciones</h2>
+        <p>
+          El producto se entrega en el estado aprobado por el cliente. <strong>Cualquier
+          manipulación, edición, ingeniería inversa, copia no autorizada, intervención
+          o alteración del código, de la base de datos, de la configuración, de los
+          servidores, de los permisos o de las integraciones</strong> —hecha por el cliente,
+          un tercero, un “experto”, una herramienta automática o inteligencia artificial—
+          <strong>libera por completo a S.D de cualquier responsabilidad</strong>, porque
+          el daño deja de ser imputable a la obra original y pasa a ser hecho propio
+          del cliente o de un tercero (<strong>artículos 1910 y 2111 del Código Civil Federal</strong>).
+        </p>
+        <p>En particular, S.D no responde si esa manipulación provoca:</p>
+        <ul>
+          <li>Corrupción de la página, de la aplicación o de sus archivos.</li>
+          <li>Pérdida de diseño, de funciones o de contenido.</li>
+          <li>Caídas, bucles de error, vulnerabilidades o imposibilidad de acceder al producto.</li>
+          <li>Incumplimiento de tiendas de aplicaciones, pasarelas de pago u otros servicios.</li>
+          <li>Daño a la imagen, a las ventas o a la operación del negocio.</li>
+        </ul>
+        <p>
+          Restaurar, diagnosticar o reparar un producto alterado no está incluido en el
+          proyecto original. Si el cliente lo solicita, se cotizará como trabajo nuevo
+          y S.D podrá negarse cuando el estado del código o de los servidores lo haga
+          inviable o inseguro.
+        </p>
+        <p>
+          El cliente se obliga a no eliminar créditos, avisos de propiedad, medidas técnicas
+          o registros que S.D haya incluido, salvo autorización por escrito. La reproducción,
+          modificación o distribución no autorizada de un programa de cómputo puede constituir
+          infracción a los derechos de autor, de acuerdo con los artículos
+          <strong>27, 102 y 231 de la Ley Federal del Derecho de Autor</strong>.
+        </p>
+      </section>
+
+      <section id="negocio">
+        <h2>7. Daños al negocio, datos y terceros</h2>
+        <p>
+          El cliente es el único responsable de cómo usa el software, la app o el sitio
+          en su actividad: ventas, cobros, datos de sus usuarios, publicidad, obligaciones
+          fiscales, permisos, protección de datos y relación con sus propios clientes.
+        </p>
+        <p>
+          <strong>S.D no se hace cargo de cualquier cosa que pueda afectar al negocio
+          del cliente una vez cerrado el trato</strong>, incluyendo interrupción de ventas,
+          pedidos perdidos, inventario descuadrado, citas no registradas, reputación,
+          quejas de usuarios, multas o conflictos con proveedores.
+        </p>
+        <p>
+          El cliente debe mantener copias de seguridad propias y actuales. S.D no asume
+          el deber de resguardar de forma indefinida el código, los contenidos ni las
+          bases de datos después de la entrega, salvo contrato de respaldo expreso.
+        </p>
+        <p>
+          Si un tercero reclama a S.D por el uso que el cliente da al producto, el cliente
+          deberá sacar en paz y a salvo a S.D, cubriendo costas, daños y gastos razonables.
+        </p>
+      </section>
+
+      <section id="garantia">
+        <h2>8. Garantía limitada y soporte</h2>
+        <p>
+          Salvo que el contrato particular indique otro periodo, S.D puede ofrecer una
+          <strong>ventana breve de ajustes menores</strong> (errores evidentes de lo ya
+          aprobado, no funciones nuevas) únicamente si se reportan por escrito antes
+          del cierre o dentro del plazo de revisión. Esa ventana no cubre:
+        </p>
+        <ul>
+          <li>Cambios de opinión, de marca o de requisitos.</li>
+          <li>Nuevas funciones o rediseños.</li>
+          <li>Fallos causados por el cliente, terceros, hosting, internet o dispositivos.</li>
+          <li>Código o contenidos alterados después de la entrega.</li>
+        </ul>
+        <p>
+          El acompañamiento posterior (“quedamos cerca para soporte”) es una disposición
+          comercial, no una garantía ilimitada ni un seguro del negocio. Cualquier
+          mantenimiento, monitoreo 24/7, SLA, actualizaciones de seguridad continuas
+          o hosting administrado requiere un acuerdo aparte.
+        </p>
+        <p>
+          El software, las apps y los sitios se entregan “tal cual” una vez aprobados,
+          sin garantías implícitas de comerciabilidad, idoneidad para un fin particular
+          o ausencia total de errores, más allá de lo expresamente pactado por escrito.
+        </p>
+      </section>
+
+      <section id="propiedad">
+        <h2>9. Propiedad intelectual</h2>
+        <p>
+          Los programas de cómputo, sitios y aplicaciones creados por S.D se protegen
+          como obras, en términos de los artículos <strong>13, fracción XIII, 101 y 102
+          de la Ley Federal del Derecho de Autor (LFDA)</strong>. Hasta que el cliente
+          cubra la totalidad de los pagos, S.D conserva los derechos patrimoniales.
+          Tras el pago completo y el cierre, se otorga al cliente una licencia de uso
+          del entregable específico, en los términos del contrato particular.
+        </p>
+        <blockquote class="cita">
+          <p>“Los programas de cómputo se protegen en los mismos términos que las obras literarias. Dicha protección se extiende tanto a los programas operativos como a los aplicativos, ya sea en forma de código fuente o de código objeto.”</p>
+          <cite>Artículo 102, Ley Federal del Derecho de Autor</cite>
+        </blockquote>
+        <p>
+          Toda transmisión de derechos patrimoniales debe constar por escrito
+          (<strong>artículo 30 de la LFDA</strong>). S.D retiene el derecho de reutilizar
+          conocimientos, componentes genéricos, librerías, métodos y fragmentos no
+          confidenciales en otros proyectos. Las herramientas internas y el código de
+          terceros siguen sujetos a sus propias licencias.
+        </p>
+        <p>
+          El cliente garantiza que los textos, logotipos, fotos, marcas y datos que
+          proporcione son de su titularidad o que tiene permiso para usarlos, y responde
+          de cualquier reclamo al respecto, incluyendo infracciones a la LFDA o a la
+          Ley Federal de Protección a la Propiedad Industrial.
+        </p>
+      </section>
+
+      <section id="obligaciones">
+        <h2>10. Obligaciones del cliente</h2>
+        <p>El cliente se compromete a:</p>
+        <ul>
+          <li>Entregar información veraz, accesos y contenidos necesarios.</li>
+          <li>Revisar y aprobar o rechazar entregables en tiempo.</li>
+          <li>Usar el producto de forma lícita y no introducir malware ni usos prohibidos.</li>
+          <li>Custodiar contraseñas, paneles, repositorios y claves de API.</li>
+          <li>No presentar a terceros el trabajo de S.D como propio en forma que niegue la autoría, si así se pactó.</li>
+          <li>Informar de inmediato cualquier incidente, pero entendiendo que el aviso no reabre automáticamente la responsabilidad de S.D después del cierre.</li>
+        </ul>
+      </section>
+
+      <section id="confidencialidad">
+        <h2>11. Confidencialidad y datos</h2>
+        <p>
+          Ambas partes guardarán como confidencial la información no pública que se
+          intercambien con motivo del proyecto. Esta obligación no cubre información
+          que ya era pública, que se recibió de un tercero legitimado o que deba
+          revelarse por ley o autoridad.
+        </p>
+        <p>
+          El cliente es el <strong>responsable</strong> del tratamiento de los datos
+          personales de sus propios usuarios, y S.D actúa como <strong>encargado</strong>
+          únicamente respecto de los datos que reciba para prestar el servicio, en
+          los términos de los artículos <strong>3 y 6 de la Ley Federal de Protección
+          de Datos Personales en Posesión de los Particulares</strong>. El cliente
+          debe contar con aviso de privacidad y medidas de seguridad. El formulario
+          de contacto del sitio de S.D se usa para atender solicitudes; no se venden
+          esos datos a terceros.
+        </p>
+      </section>
+
+      <section id="hosting">
+        <h2>12. Hosting, dominios y servicios de terceros</h2>
+        <p>
+          Dominios, hospedaje, certificados SSL, pasarelas de pago, tiendas de
+          aplicaciones, correos, analítica, mapas, SMS u otros servicios de terceros
+          son contratos del cliente con esos proveedores, salvo que S.D los administre
+          expresamente por escrito. S.D no responde por caídas, cambios de precios,
+          políticas, bloqueos o fallos de esos proveedores.
+        </p>
+      </section>
+
+      <section id="terminacion">
+        <h2>13. Terminación</h2>
+        <p>
+          Cualquiera de las partes puede dar por terminado el proyecto por incumplimiento
+          grave no subsanado en 10 días hábiles tras el aviso por escrito. El cliente
+          pagará el trabajo ya realizado y los gastos comprometidos. S.D podrá retener
+          entregables hasta liquidar saldos.
+        </p>
+        <p>
+          La terminación anticipada por decisión del cliente no obliga a devolver
+          anticipos de etapas ya iniciadas.
+        </p>
+      </section>
+
+      <section id="marco">
+        <h2>14. Marco legal que respalda estos términos</h2>
+        <p>
+          Este apartado resume las normas federales mexicanas en las que se apoyan
+          las cláusulas anteriores. No sustituye el texto íntegro de cada ley.
+        </p>
+
+        <h3>Código Civil Federal</h3>
+        <ul>
+          <li><strong>Art. 1796.</strong> El contrato obliga desde que hay consentimiento, a lo pactado y a las consecuencias de buena fe, uso o ley.</li>
+          <li><strong>Art. 1803.</strong> El consentimiento puede ser expreso o tácito (hechos que lo presupongan: pago, publicación, uso en producción).</li>
+          <li><strong>Art. 1832.</strong> Cada parte se obliga en la manera y términos en que quiso obligarse.</li>
+          <li><strong>Art. 1839.</strong> Los contratantes pueden poner las cláusulas que crean convenientes, incluida la limitación de responsabilidad posterior a la entrega.</li>
+          <li><strong>Art. 1910.</strong> Quien causa un daño ilícitamente debe repararlo; si el cliente o un tercero altera el producto, el daño les es imputable a ellos.</li>
+          <li><strong>Art. 1949.</strong> En obligaciones recíprocas cabe la rescisión si una parte no cumple (por ejemplo, falta de pago).</li>
+          <li><strong>Art. 2104.</strong> Quien no ejecuta lo pactado, o lo ejecuta de forma distinta, responde de daños y perjuicios, dentro de los límites contractuales.</li>
+          <li><strong>Art. 2106.</strong> La responsabilidad por dolo no se puede renunciar. Estas cláusulas no cubren dolo de S.D.</li>
+          <li><strong>Art. 2110.</strong> Los daños deben ser consecuencia inmediata y directa del incumplimiento. No se cubre lucro cesante remoto ni daño al negocio por causas ajenas.</li>
+          <li><strong>Art. 2111.</strong> Nadie está obligado al caso fortuito, salvo que lo haya causado, aceptado o se lo imponga la ley.</li>
+          <li><strong>Arts. 2616 y siguientes.</strong> El contrato de obra a precio alzado regula ejecutar una obra por un precio cierto. Recibida la obra, las reclamaciones se limitan a lo pactado y a los vicios imputables al ejecutor, no a alteraciones posteriores del cliente.</li>
+        </ul>
+
+        <h3>Código de Comercio</h3>
+        <ul>
+          <li><strong>Art. 2.</strong> A falta de disposición de este Código, a los actos de comercio se aplican las del derecho común (Código Civil Federal).</li>
+          <li><strong>Art. 75.</strong> Reputa actos de comercio las negociaciones mercantiles y empresas que enumera. Los servicios de software, apps y sitios prestados con carácter empresarial se rigen como actos mercantiles cuando corresponda.</li>
+          <li><strong>Art. 78.</strong> En las convenciones mercantiles cada uno se obliga en la manera y términos que aparezca que quiso obligarse, sin solemnidades especiales.</li>
+        </ul>
+
+        <h3>Ley Federal del Derecho de Autor</h3>
+        <ul>
+          <li><strong>Art. 13, fr. XIII.</strong> Los programas de cómputo son obras protegidas.</li>
+          <li><strong>Art. 27.</strong> El titular de los derechos patrimoniales puede autorizar o prohibir la reproducción, distribución, comunicación y transformación de la obra.</li>
+          <li><strong>Art. 30.</strong> La transmisión de derechos patrimoniales debe constar por escrito.</li>
+          <li><strong>Arts. 101 y 102.</strong> Definen y protegen el programa de cómputo en código fuente y objeto, como obra literaria.</li>
+          <li><strong>Art. 104.</strong> El usuario lícito puede hacer una copia de seguridad para su propio uso; no para otro fin ni para revender o alterar el producto de forma no autorizada.</li>
+        </ul>
+
+        <h3>Protección de datos y consumidores</h3>
+        <ul>
+          <li><strong>LFPDPPP, arts. 3 y 6.</strong> El cliente es responsable de los datos de sus usuarios; S.D, cuando aplique, actúa como encargado solo para prestar el servicio.</li>
+          <li><strong>Ley Federal de Protección al Consumidor, arts. 1 y 7.</strong> Si el cliente es consumidor en los términos de esa ley, no se pueden renunciar derechos que sean de orden público en su perjuicio. Entre empresas, rige de preferencia lo pactado en estos términos y en el contrato particular.</li>
+        </ul>
+      </section>
+
+      <section id="ley">
+        <h2>15. Ley aplicable y contacto</h2>
+        <p>
+          Estos términos se rigen por las leyes de los <strong>Estados Unidos Mexicanos</strong>,
+          en especial el Código Civil Federal, el Código de Comercio, la Ley Federal
+          del Derecho de Autor y, en lo que resulte aplicable, la LFPDPPP y la Ley
+          Federal de Protección al Consumidor. Para cualquier controversia, las partes
+          se someten a los tribunales competentes del fuero común, renunciando a
+          cualquier otro fuero que pudiera corresponderles por razón de domicilio.
+        </p>
+        <p>
+          S.D puede actualizar este documento. La versión vigente es la publicada en
+          este sitio. Los proyectos ya cerrados siguen sujetos a la limitación de
+          responsabilidad aquí descrita.
+        </p>
+        <p>
+          Para dudas sobre estos términos: <strong>s.d.soluciones.digitaless@gmail.com</strong>
+        </p>
+        <p>
+          Este documento organiza cláusulas de servicio con cita de normas federales
+          vigentes. No sustituye un contrato firmado ni es asesoría legal personalizada.
+          Si el cliente necesita cláusulas adicionales, puede solicitarlas por escrito
+          antes de iniciar el proyecto.
+        </p>
+      </section>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <img src="logo.jpeg" alt="S.D">
+      <b>S.D Soluciones Digitales</b>
+    </div>
+    <div class="footer-links">
+      <a href="index.html#servicios">Servicios</a>
+      <a href="index.html#publico">¿Para quién?</a>
+      <a href="index.html#proceso">Proceso</a>
+      <a href="terminos.html">Términos y condiciones</a>
+    </div>
+  </div>
+  <p class="copyright">© <span id="anio"></span> S.D Soluciones Digitales · Tecnología hecha a tu medida</p>
+</footer>
+
+<script>
+  document.getElementById('anio').textContent = new Date().getFullYear();
+</script>
+<script src="asistente.js" defer></script>
+</body>
+</html>

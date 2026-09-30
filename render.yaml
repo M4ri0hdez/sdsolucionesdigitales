@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: sdsolucionesdigitales
+    runtime: node
+    plan: free
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: REPORT_EMAIL
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash

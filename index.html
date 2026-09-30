@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.D — Soluciones Digitales</title>
+<meta name="description" content="Software, apps móviles y páginas web hechas a tu medida. Para empresas, emprendedores y cualquier persona que quiera simplificar su vida digital.">
+<link rel="icon" href="logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     TEMA OSCURO UNIFICADO — púrpura, rosa y negro suaves (mate)
+     ============================================================ */
+  :root {
+    --fondo:     #17131f;   /* base de toda la página */
+    --fondo-2:   #1c1726;   /* variación sutil de sección */
+    --panel:     #241d30;   /* tarjetas */
+    --panel-2:   #2a2238;   /* tarjetas al pasar el mouse */
+    --borde:     rgba(207,195,222,.12);
+    --borde-h:   rgba(207,195,222,.28);
+    --purpura:   #6f5b8f;
+    --purpura-h: #5d4a7a;
+    --purpura-cl:#e9e2f2;   /* texto claro con matiz púrpura */
+    --lila:      #cfc3de;   /* texto secundario sobre oscuro */
+    --rosa:      #c998a8;   /* rosa empolvado (acentos) */
+    --rosa-f:    #b07f92;
+    --texto:     #f0ecf5;   /* texto principal */
+    --gris:      #9a92a8;   /* texto terciario */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.65;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--purpura); color: #fff; }
+
+  h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 600; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  .contenedor { width: min(1120px, 92%); margin: 0 auto; }
+  section { padding: 96px 0; }
+
+  /* Secciones alternan entre dos tonos oscuros muy cercanos */
+  .tono-a { background: var(--fondo); }
+  .tono-b { background: var(--fondo-2); border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); }
+
+  .revelar { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .revelar.visible { opacity: 1; transform: none; }
+
+  .kicker {
+    display: inline-block; letter-spacing: 3.5px; text-transform: uppercase;
+    font-size: .75rem; font-weight: 600; color: var(--rosa); margin-bottom: 16px;
+  }
+
+  /* ============ NAVEGACIÓN ============ */
+  nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    background: rgba(23,19,31,.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--borde);
+  }
+  .nav-inner { display: flex; align-items: center; height: 70px; }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; background: var(--panel); }
+  .nav-logo span { font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--texto); letter-spacing: .5px; }
+  .nav-logo span b { color: var(--rosa); font-weight: 700; }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    background:
+      radial-gradient(ellipse 60% 50% at 78% 18%, rgba(111,91,143,.20), transparent 70%),
+      radial-gradient(ellipse 45% 40% at 15% 88%, rgba(201,152,168,.09), transparent 70%),
+      var(--fondo);
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.15fr .85fr;
+    gap: 56px; align-items: center; padding-top: 90px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.9rem);
+    line-height: 1.12; margin-bottom: 22px;
+  }
+  .hero h1 em { font-style: normal; color: var(--rosa); }
+  .hero p.sub {
+    font-size: 1.1rem; font-weight: 300; color: var(--lila);
+    max-width: 540px; margin-bottom: 34px;
+  }
+  .hero-botones { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+
+  .btn {
+    display: inline-block; padding: 14px 32px; border-radius: 30px;
+    font-weight: 500; font-size: .97rem; cursor: pointer; border: none;
+    transition: background .3s, transform .3s, border-color .3s, color .3s;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn-purpura { background: var(--purpura); color: #fff; }
+  .btn-purpura:hover { background: var(--purpura-h); }
+  .btn-linea { border: 1.5px solid var(--borde-h); color: var(--texto); background: transparent; }
+  .btn-linea:hover { border-color: var(--rosa); color: var(--rosa); }
+
+  .hero-sellos { display: flex; gap: 26px; flex-wrap: wrap; }
+  .sello { display: flex; align-items: center; gap: 9px; font-size: .9rem; color: var(--lila); }
+  .sello::before { content: "✓"; color: var(--rosa); font-weight: 600; }
+
+  .hero-logo-wrap { display: flex; justify-content: center; }
+  .hero-logo {
+    width: min(350px, 78%); aspect-ratio: 1; border-radius: 50%; object-fit: cover;
+    object-position: center;
+    border: 1px solid var(--borde-h);
+    box-shadow: 0 30px 60px rgba(0,0,0,.45);
+    animation: flotar 7s ease-in-out infinite;
+    background: #0d0b12;
+  }
+  @keyframes flotar { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+  /* ============ CABECERAS DE SECCIÓN ============ */
+  .cabecera { text-align: center; max-width: 680px; margin: 0 auto 56px; }
+  .cabecera h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); line-height: 1.18; }
+  .cabecera p { margin-top: 14px; color: var(--lila); font-weight: 300; }
+
+  /* ============ SERVICIOS ============ */
+  .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 22px; }
+  .servicio {
+    background: var(--panel); border: 1px solid var(--borde); border-radius: 16px;
+    padding: 36px 28px; transition: transform .35s, background .35s, border-color .35s;
+  }
+  .servicio:hover { transform: translateY(-6px); background: var(--panel-2); border-color: var(--borde-h); }
+  .servicio .icono {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: rgba(111,91,143,.22); display: flex; align-items: center;
+    justify-content: center; font-size: 1.4rem; margin-bottom: 20px;
+  }
+  .servicio:nth-child(even) .icono { background: rgba(201,152,168,.15); }
+  .servicio h3 { font-size: 1.25rem; margin-bottom: 10px; color: var(--purpura-cl); }
+  .servicio p { font-size: .93rem; color: var(--lila); font-weight: 300; }
+
+  /* ============ ¿PARA QUIÉN? ============ */
+  .publico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-bottom: 34px; }
+  .publico {
+    background: var(--panel); border: 1px solid var(--borde);
+    border-radius: 18px; padding: 40px 36px; transition: border-color .35s;
+  }
+  .publico:hover { border-color: var(--borde-h); }
+  .publico .tag {
+    display: inline-block; font-size: .75rem; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 600; padding: 6px 14px;
+    border-radius: 20px; margin-bottom: 18px;
+  }
+  .publico .tag.negocio { background: rgba(111,91,143,.25); color: var(--purpura-cl); }
+  .publico .tag.personal { background: rgba(201,152,168,.18); color: var(--rosa); }
+  .publico h3 { font-size: 1.55rem; margin-bottom: 18px; }
+  .publico ul { list-style: none; }
+  .publico li {
+    padding: 9px 0 9px 28px; position: relative;
+    color: var(--lila); font-weight: 300; font-size: .97rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .publico li:last-child { border-bottom: none; }
+  .publico li::before { content: "✓"; position: absolute; left: 0; font-weight: 600; }
+  .publico.negocio li::before { color: var(--purpura-cl); }
+  .publico.personal li::before { color: var(--rosa); }
+  .publico-nota {
+    text-align: center; color: var(--lila); font-weight: 300;
+    max-width: 620px; margin: 0 auto; font-size: 1.02rem;
+  }
+  .publico-nota b { color: var(--rosa); font-weight: 500; }
+
+  /* ============ PROCESO ============ */
+  .pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+  .paso {
+    background: var(--panel); border: 1px solid var(--borde); border-radius: 16px;
+    padding: 34px 26px; transition: background .35s;
+  }
+  .paso:hover { background: var(--panel-2); }
+  .paso .n {
+    font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 600;
+    color: var(--rosa); opacity: .5; line-height: 1; margin-bottom: 12px;
+  }
+  .paso h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .paso p { font-size: .92rem; color: var(--lila); font-weight: 300; }
+
+  /* ============ CTA ============ */
+  .cta {
+    background:
+      radial-gradient(ellipse 55% 60% at 20% 30%, rgba(111,91,143,.22), transparent 70%),
+      radial-gradient(ellipse 40% 50% at 85% 75%, rgba(201,152,168,.10), transparent 70%),
+      var(--fondo-2);
+    border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde);
+    text-align: center;
+  }
+  .cta h2 { font-size: clamp(1.9rem, 3.6vw, 2.5rem); margin-bottom: 14px; }
+  .cta p { color: var(--lila); max-width: 540px; margin: 0 auto 32px; font-weight: 300; }
+
+  /* ============ CONTACTO ============ */
+  .contacto-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: start; }
+  .contacto-info h2 { font-size: 2.1rem; margin-bottom: 14px; }
+  .contacto-info > p { color: var(--lila); margin-bottom: 30px; font-weight: 300; }
+  .dato { display: flex; gap: 14px; align-items: center; margin-bottom: 18px; }
+  .dato .ic {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    background: rgba(111,91,143,.22); color: var(--purpura-cl);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .dato b { display: block; font-size: .95rem; }
+  .dato span { color: var(--lila); font-size: .9rem; }
+  .dato a { color: var(--lila); }
+  .dato a:hover { color: var(--rosa); }
+
+  form {
+    background: var(--panel); border: 1px solid var(--borde); border-radius: 18px;
+    padding: 38px;
+  }
+  .campo { margin-bottom: 18px; }
+  .campo label {
+    display: block; font-size: .78rem; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--rosa); margin-bottom: 7px;
+  }
+  .campo input, .campo textarea {
+    width: 100%; padding: 12px 15px; border: 1.5px solid var(--borde);
+    border-radius: 10px; font-family: inherit; font-size: .97rem;
+    background: var(--fondo-2); color: var(--texto);
+    transition: border-color .3s;
+  }
+  .campo input::placeholder, .campo textarea::placeholder { color: var(--gris); }
+  .campo input:focus, .campo textarea:focus {
+    outline: none; border-color: var(--purpura);
+  }
+  .campo textarea { resize: vertical; min-height: 120px; }
+  form .btn { width: 100%; margin-top: 6px; }
+  form .btn:disabled { opacity: .65; cursor: wait; }
+  .form-aviso { margin-top: 14px; font-size: .92rem; font-weight: 300; min-height: 1.3em; }
+  .form-aviso.ok { color: var(--rosa); }
+  .form-aviso.error { color: #e8a0b0; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--fondo); color: var(--gris);
+    padding: 46px 0 28px; border-top: 1px solid var(--borde);
+  }
+  .footer-grid {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 22px; margin-bottom: 26px;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 12px; }
+  .footer-logo img { height: 42px; width: 42px; border-radius: 50%; object-fit: cover; background: var(--panel); }
+  .footer-logo b { color: var(--texto); font-family: 'Fraunces', serif; font-weight: 600; }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: .9rem; transition: color .3s; }
+  .footer-links a:hover { color: var(--rosa); }
+  .copyright {
+    text-align: center; font-size: .84rem; padding-top: 22px;
+    border-top: 1px solid var(--borde);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .hero-grid, .contacto-grid { grid-template-columns: 1fr; }
+    .publico-grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 110px; text-align: center; }
+    .hero p.sub { margin-inline: auto; }
+    .hero-botones, .hero-sellos { justify-content: center; }
+    .hero-logo-wrap { order: -1; }
+    .hero-logo { width: min(230px, 62%); }
+    section { padding: 70px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAVEGACIÓN ============ -->
+<nav>
+  <div class="contenedor nav-inner">
+    <a href="#inicio" class="nav-logo">
+      <img src="logo.jpeg" alt="Logo S.D">
+      <span>S<b>.</b>D Soluciones Digitales</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="inicio">
+  <div class="contenedor hero-grid">
+    <div>
+      <span class="kicker">Software · Apps · Web</span>
+      <h1>Tecnología hecha <em>a tu medida</em>, para tu negocio y para tu día a día.</h1>
+      <p class="sub">
+        En <strong>S.D Soluciones Digitales</strong> creamos software, aplicaciones móviles
+        y páginas web personalizadas. Trabajamos con empresas que quieren crecer…
+        y con personas que simplemente quieren que su vida sea un poco más fácil.
+      </p>
+      <div class="hero-botones">
+        <a href="#contacto" class="btn btn-purpura">Cuéntanos tu idea</a>
+        <a href="#servicios" class="btn btn-linea">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-logo-wrap">
+      <img src="logo.jpeg" alt="Logo de S.D Soluciones Digitales" class="hero-logo">
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="tono-b" id="servicios">
+  <div class="contenedor">
+    <div class="cabecera revelar">
+      <span class="kicker">Lo que hacemos</span>
+      <h2>Soluciones que se adaptan a ti, no al revés</h2>
+      <p>Nada de plantillas genéricas: cada proyecto se diseña desde cero alrededor de lo que realmente necesitas.</p>
+    </div>
+    <div class="servicios-grid">
+      <div class="servicio revelar">
+        <div class="icono">⚙️</div>
+        <h3>Software a medida</h3>
+        <p>Sistemas y programas diseñados exactamente para la forma en que trabajas: ventas, inventario, agenda, reportes… lo que necesites, nada de más.</p>
+      </div>
+      <div class="servicio revelar">
+        <div class="icono">📱</div>
+        <h3>Apps móviles</h3>
+        <p>Aplicaciones Android e iOS útiles, rápidas y fáciles de usar, listas para publicarse en las tiendas oficiales.</p>
+      </div>
+      <div class="servicio revelar">
+        <div class="icono">🌐</div>
+        <h3>Páginas web</h3>
+        <p>Sitios profesionales y adaptables a cualquier pantalla: presencia, catálogo, reservaciones o tienda en línea.</p>
+      </div>
+      <div class="servicio revelar">
+        <div class="icono">🌿</div>
+        <h3>Apps para tu vida diaria</h3>
+        <p>¿Organizar tus gastos, tus recordatorios o tu negocio pequeño? Las buenas ideas no solo vienen de las empresas: si te simplificaría la vida, la construimos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ¿PARA QUIÉN? ============ -->
+<section class="tono-a" id="publico">
+  <div class="contenedor">
+    <div class="cabecera revelar">
+      <span class="kicker">Para todos</span>
+      <h2>No hay cliente "pequeño" ni idea "rara"</h2>
+      <p>Trabajamos igual de cerca con una empresa consolidada que con alguien que solo quiere dejar de anotar sus gastos en papel.</p>
+    </div>
+    <div class="publico-grid">
+      <div class="publico negocio revelar">
+        <span class="tag negocio">Empresas y negocios</span>
+        <h3>Haz crecer tu operación</h3>
+        <ul>
+          <li>Sistemas de venta, inventario y agenda a la medida de tu flujo real de trabajo</li>
+          <li>Páginas web que generan confianza y atraen clientes</li>
+          <li>Apps para que tus clientes te tengan en la mano</li>
+          <li>Automatización de tareas repetitivas que te quitan tiempo</li>
+        </ul>
+      </div>
+      <div class="publico personal revelar">
+        <span class="tag personal">Personas como tú</span>
+        <h3>Simplifica tu día a día</h3>
+        <ul>
+          <li>Apps personales para organizar gastos, tareas, hábitos o tiempo</li>
+          <li>Herramientas para tu emprendimiento o negocio desde casa</li>
+          <li>Tu idea de app, aunque hoy solo exista en tu cabeza</li>
+          <li>Explicaciones en lenguaje humano, sin palabras complicadas</li>
+        </ul>
+      </div>
+    </div>
+    <p class="publico-nota revelar">
+      Y si estás en medio de los dos —un emprendimiento que está creciendo, una idea que aún
+      no tiene forma— <b>también es nuestro terreno favorito</b>.
+    </p>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section class="tono-b" id="proceso">
+  <div class="contenedor">
+    <div class="cabecera revelar">
+      <span class="kicker">Cómo trabajamos</span>
+      <h2>De la idea al producto, con calma y claridad</h2>
+    </div>
+    <div class="pasos">
+      <div class="paso revelar">
+        <div class="n">01</div>
+        <h3>Escuchamos</h3>
+        <p>Una conversación sin compromiso para entender tu situación, tus objetivos y tu presupuesto.</p>
+      </div>
+      <div class="paso revelar">
+        <div class="n">02</div>
+        <h3>Proposemos</h3>
+        <p>Te presentamos la solución en lenguaje claro: qué se hará, cuánto cuesta y cuánto tarda.</p>
+      </div>
+      <div class="paso revelar">
+        <div class="n">03</div>
+        <h3>Construimos</h3>
+        <p>Desarrollamos con avances periódicos, para que veas el progreso y ajustemos a tiempo.</p>
+      </div>
+      <div class="paso revelar">
+        <div class="n">04</div>
+        <h3>Acompañamos</h3>
+        <p>Entregamos, explicamos y quedamos cerca para el soporte y las mejoras que surjan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="contenedor revelar">
+    <h2>¿Tienes una idea, un problema o solo una curiosidad?</h2>
+    <p>Cuéntanos. La primera conversación es gratuita y sin compromiso: lo peor que puede pasar es que salgas con tu idea más clara.</p>
+    <a href="#contacto" class="btn btn-purpura">Empezar la conversación</a>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="tono-a" id="contacto">
+  <div class="contenedor contacto-grid">
+    <div class="contacto-info revelar">
+      <span class="kicker">Contacto</span>
+      <h2>Hablemos</h2>
+      <p>Responde el formulario o escríbenos directo. Cuanto más nos cuentes —incluso si aún es una idea suelta—, mejor podremos ayudarte.</p>
+      <div class="dato">
+        <div class="ic">✉️</div>
+        <div><b>Correo</b><span><a href="mailto:s.d.soluciones.digitaless@gmail.com">s.d.soluciones.digitaless@gmail.com</a></span></div>
+      </div>
+      <div class="dato">
+        <div class="ic">💬</div>
+        <div><b>WhatsApp</b><span><a href="https://chat.whatsapp.com/CgfWAkxiry357IrqbP1pjl" target="_blank" rel="noopener noreferrer">S.D Atención a clientes</a></span></div>
+      </div>
+      <div class="dato">
+        <div class="ic">🕒</div>
+        <div><b>Horario</b><span>Lunes a viernes · 9:00 – 18:00</span></div>
+      </div>
+    </div>
+
+    <form id="formulario" class="revelar">
+      <div class="campo">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" required placeholder="Tu nombre">
+      </div>
+      <div class="campo">
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" required placeholder="tucorreo@ejemplo.com">
+      </div>
+      <div class="campo">
+        <label for="mensaje">Cuéntanos tu idea</label>
+        <textarea id="mensaje" required placeholder="¿Qué quieres lograr? ¿Qué problema te gustaría resolver?"></textarea>
+      </div>
+      <button type="submit" class="btn btn-purpura">Enviar mensaje</button>
+      <p class="form-aviso" id="form-aviso" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="contenedor">
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <img src="logo.jpeg" alt="S.D">
+        <b>S.D Soluciones Digitales</b>
+      </div>
+      <div class="footer-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#publico">¿Para quién?</a>
+        <a href="#proceso">Proceso</a>
+        <a href="terminos.html">Términos y condiciones</a>
+      </div>
+    </div>
+    <p class="copyright">© <span id="anio"></span> S.D Soluciones Digitales · Tecnología hecha a tu medida</p>
+  </div>
+</footer>
+
+<script>
+  // Aparición suave al hacer scroll
+  const observador = new IntersectionObserver(entradas => {
+    entradas.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: .12 });
+  document.querySelectorAll('.revelar').forEach(el => observador.observe(el));
+
+  // Año automático del footer
+  document.getElementById('anio').textContent = new Date().getFullYear();
+
+  const formApi = (window.SD_API || (location.protocol === 'file:' ? 'http://localhost:3000' : '')).replace(/\/$/, '');
+  const formulario = document.getElementById('formulario');
+  const avisoForm = document.getElementById('form-aviso');
+  const btnForm = formulario.querySelector('button[type="submit"]');
+
+  formulario.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const datos = {
+      nombre: document.getElementById('nombre').value.trim(),
+      correo: document.getElementById('correo').value.trim(),
+      mensaje: document.getElementById('mensaje').value.trim()
+    };
+    avisoForm.className = 'form-aviso';
+    avisoForm.textContent = 'Enviando…';
+    btnForm.disabled = true;
+    try {
+      const res = await fetch(formApi + '/api/contacto', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'No se pudo enviar');
+      avisoForm.className = 'form-aviso ok';
+      avisoForm.textContent = 'Gracias, ' + datos.nombre + '. Te contactaremos muy pronto.';
+      formulario.reset();
+    } catch (err) {
+      avisoForm.className = 'form-aviso error';
+      avisoForm.textContent = 'No pude enviar el mensaje. Inténtalo de nuevo o escríbenos al correo.';
+    } finally {
+      btnForm.disabled = false;
+    }
+  });
+</script>
+<script src="asistente.js" defer></script>
+</body>
+</html>
