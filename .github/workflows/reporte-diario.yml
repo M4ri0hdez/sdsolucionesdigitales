@@ -1,0 +1,20 @@
+name: Reporte diario de visitas
+
+on:
+  schedule:
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm ci --omit=dev
+      - run: node scripts/reporte-diario.js
+        env:
+          GITHUB_ACTIONS: "true"
+          REPORT_EMAIL: s.d.soluciones.digitaless@gmail.com

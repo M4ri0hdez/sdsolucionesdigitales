@@ -5,6 +5,7 @@ import { extname, join, normalize, resolve } from 'node:path';
 import { config } from 'dotenv';
 import { cerrarConversacion, nuevaSesion, responder, tieneClave } from './lib/asistente-ia.js';
 import { correoListo, enviarContactoPorGmail } from './lib/correo.js';
+import { ayerMexico, enviarReporteDelDia, registrarVisita } from './lib/visitas.js';
 
 config({ path: join(process.cwd(), 'chatbot', '.env') });
 config({ path: join(process.cwd(), '.env'), override: true });
@@ -129,6 +130,18 @@ const server = createServer(async (req, res) => {
       }
       await enviarContactoPorGmail({ nombre, correo, mensaje });
       return json(res, 200, { ok: true });
+    }
+
+    if (req.method === 'POST' && url.pathname === '/api/visita') {
+      const body = await readBody(req).catch(() => ({}));
+      await registrarVisita({ persona: Boolean(body.persona) });
+      cors(res);
+      res.writeHead(204);
+      res.end();
+      if (process.env.RENDER || process.env.RENDER_EXTERNAL_URL) {
+        enviarReporteDelDia(ayerMexico()).catch((err) => console.error('reporte-visitas', err));
+      }
+      return;
     }
 
     if (req.method === 'GET') return serveStatic(req, res, url);
